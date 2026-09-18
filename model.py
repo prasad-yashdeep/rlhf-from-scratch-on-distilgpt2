@@ -85,3 +85,15 @@ def top_p_filter(logits, p):
     out[kept] = logits[kept]
     return out
 
+# Step 9 - build_synthetic_instruction_dataset
+def build_synthetic_instruction_dataset():
+    return [
+        {"prompt": "What is the capital of France?", "response": "Paris."},
+        {"prompt": "Name a primary color.", "response": "Red."},
+        {"prompt": "How many legs does a spider have?", "response": "Eight."},
+        {"prompt": "Translate 'hello' to Spanish.", "response": "Hola."},
+        {"prompt": "What is 2 + 2?", "response": "4."},
+        {"prompt": "Which planet is closest to the Sun?", "response": "Mercury."},
+        {"prompt": "How many r's are in 'strawberry'?", "response": "Three."},
+    ]
+
