@@ -58,3 +58,13 @@ def sample_with_temperature(logits, temperature):
         probablities = torch.softmax(logits/temperature,axis=-1) #-> This ensures that logits are converted into probs and sum to 1.
         return torch.multinomial(probablities,1).item()
 
+# Step 7 - top_k_filter
+def top_k_filter(logits, k):
+    # TODO: keep the k largest entries of logits and set the rest to -inf.
+    if(k < logits.shape[0]):
+        threshold = torch.topk(logits,k).values[-1]
+        mask = (logits >=threshold)
+        return torch.where(mask, logits, float('-inf'))
+    else:
+        return logits
+
