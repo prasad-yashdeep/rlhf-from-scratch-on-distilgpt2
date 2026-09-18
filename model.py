@@ -68,3 +68,20 @@ def top_k_filter(logits, k):
     else:
         return logits
 
+# Step 8 - top_p_filter
+import numpy as np
+
+def top_p_filter(logits, p):
+    logits = np.asarray(logits, dtype=float)
+    z = logits - logits.max()
+    probs = np.exp(z) / np.exp(z).sum()
+    order = np.argsort(-probs)
+    cum = np.cumsum(probs[order])
+    keep_sorted = np.empty(len(order), dtype=bool)
+    keep_sorted[0] = True
+    keep_sorted[1:] = cum[:-1] < p
+    out = np.full_like(logits, -np.inf)
+    kept = order[keep_sorted]
+    out[kept] = logits[kept]
+    return out
+

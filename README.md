@@ -17,6 +17,7 @@ python scaffold.py
 - [x] **5.** greedy_decode
 - [x] **6.** sample_with_temperature
 - [x] **7.** top_k_filter
+- [x] **8.** top_p_filter
 
 ---
 
