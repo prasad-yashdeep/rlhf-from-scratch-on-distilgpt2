@@ -1,0 +1,53 @@
+"""
+RLHF from Scratch on DistilGPT2
+
+Assembled from your step-by-step solutions.
+"""
+
+import numpy as np
+
+# Step 1 - load_distilgpt2_tokenizer
+from transformers import AutoTokenizer
+
+def load_distilgpt2_tokenizer(model_name="sshleifer/tiny-gpt2"):
+    # TODO: load and return the Hugging Face tokenizer for the given model name.
+    return AutoTokenizer.from_pretrained(model_name)
+
+
+# tok = load_distilgpt2_tokenizer()
+# print(tok.decode(tok.encode("ji")))
+
+# Step 2 - load_distilgpt2_model
+from transformers import AutoModelForCausalLM
+
+def load_distilgpt2_model(model_name="sshleifer/tiny-gpt2"):
+    # ...ForCausalLM adds the LM head, so forward() returns logits over the vocab
+    model = AutoModelForCausalLM.from_pretrained(model_name)
+    # eval() turns off dropout so two greedy decodes of the same prompt agree
+    model.eval()
+    return model
+
+# Step 3 - set_pad_token_to_eos
+def set_pad_token_to_eos(tokenizer):
+    # TODO: assign tokenizer.pad_token = tokenizer.eos_token and return the tokenizer
+    tokenizer.pad_token = tokenizer.eos_token
+    return tokenizer
+
+# Step 4 - generate_and_decode
+def generate_and_decode(model, tokenizer, prompt, max_new_tokens=8):
+    
+    inputs = tokenizer(prompt, return_tensors="pt")        # dict of tensors, not a list of ints
+    out = model.generate(**inputs, max_new_tokens=max_new_tokens,
+                         do_sample=False,                  # greedy
+                         pad_token_id=tokenizer.pad_token_id)
+    return tokenizer.decode(out[0], skip_special_tokens=True)   # out is (1, T); decode the row
+
+# Step 5 - greedy_decode
+import torch
+
+def greedy_decode(logits):
+    """Return the argmax token id from a single-row logits vector."""
+    # TODO: return the token id with the largest logit as a Python int
+    out= torch.argmax(logits)
+    return out.item()
+
