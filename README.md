@@ -21,6 +21,7 @@ python scaffold.py
 - [x] **9.** build_synthetic_instruction_dataset
 - [x] **10.** format_example
 - [x] **11.** apply_template
+- [x] **12.** tokenize_example
 
 ---
 

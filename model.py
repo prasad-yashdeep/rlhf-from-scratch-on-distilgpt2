@@ -115,3 +115,10 @@ def apply_template(examples):
     
     return formatted_examples_list
 
+# Step 12 - tokenize_example
+def tokenize_example(tokenizer, text, max_length=64):
+    # TODO: encode `text` with truncation at max_length, no padding, return list[int]
+
+    input_ids = tokenizer.encode(text, truncation = True , max_length= max_length, padding = False)
+    return input_ids
+
