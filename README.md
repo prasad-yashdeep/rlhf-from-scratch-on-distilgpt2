@@ -23,6 +23,7 @@ python scaffold.py
 - [x] **11.** apply_template
 - [x] **12.** tokenize_example
 - [x] **13.** build_labels
+- [x] **14.** mask_prompt_labels
 
 ---
 

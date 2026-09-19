@@ -131,3 +131,19 @@ def build_labels(input_ids):
 
     return labels
 
+# Step 14 - mask_prompt_labels
+def mask_prompt_labels(labels, prompt_length):
+    # TODO: replace the first prompt_length entries of labels with -100 and return the new list
+
+
+    masked_labels = copy.deepcopy(labels)
+    n = len(labels)
+    
+    if prompt_length < n:
+        for idx in range(prompt_length):
+            masked_labels[idx] = -100
+        
+        return masked_labels
+    
+    return [-100]*n
+
