@@ -97,3 +97,10 @@ def build_synthetic_instruction_dataset():
         {"prompt": "How many r's are in 'strawberry'?", "response": "Three."},
     ]
 
+# Step 10 - format_example
+def format_example(example):
+    # TODO: render {'prompt','response'} into one training string with role markers
+    
+
+ return f'### Instruction:\n{example["prompt"]}\n\n### Response:\n{example["response"]}'
+
