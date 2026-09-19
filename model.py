@@ -104,3 +104,14 @@ def format_example(example):
 
  return f'### Instruction:\n{example["prompt"]}\n\n### Response:\n{example["response"]}'
 
+# Step 11 - apply_template
+def apply_template(examples):
+    # TODO: apply format_example to each item in examples and return the list of strings.
+    
+    formatted_examples_list  = []
+    for example in examples:
+
+        formatted_examples_list.append(format_example(example))
+    
+    return formatted_examples_list
+
