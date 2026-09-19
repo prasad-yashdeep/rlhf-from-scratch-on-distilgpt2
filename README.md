@@ -22,6 +22,7 @@ python scaffold.py
 - [x] **10.** format_example
 - [x] **11.** apply_template
 - [x] **12.** tokenize_example
+- [x] **13.** build_labels
 
 ---
 

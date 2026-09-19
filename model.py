@@ -122,3 +122,12 @@ def tokenize_example(tokenizer, text, max_length=64):
     input_ids = tokenizer.encode(text, truncation = True , max_length= max_length, padding = False)
     return input_ids
 
+# Step 13 - build_labels
+import copy
+
+def build_labels(input_ids):
+    # TODO: return a fresh list equal to input_ids to serve as next-token labels
+    labels = copy.deepcopy(input_ids)
+
+    return labels
+
