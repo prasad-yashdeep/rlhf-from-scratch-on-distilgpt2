@@ -24,6 +24,7 @@ python scaffold.py
 - [x] **12.** tokenize_example
 - [x] **13.** build_labels
 - [x] **14.** mask_prompt_labels
+- [x] **15.** pad_batch
 
 ---
 
