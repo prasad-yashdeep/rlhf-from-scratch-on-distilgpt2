@@ -27,6 +27,7 @@ python scaffold.py
 - [x] **15.** pad_batch
 - [x] **16.** make_attention_mask
 - [x] **17.** collate_lm_batch
+- [x] **18.** iterate_minibatches
 
 ---
 

@@ -164,3 +164,12 @@ def collate_lm_batch(batch, pad_id):
     return {k: torch.tensor(v, dtype=torch.long)
             for k, v in (("input_ids", ids), ("labels", labels), ("attention_mask", mask))}
 
+# Step 18 - iterate_minibatches
+import random
+
+def iterate_minibatches(examples, batch_size, seed=0):
+    items = list(examples)                      # a copy, so the caller's list keeps its order
+    random.Random(seed).shuffle(items)          # a local RNG, so the global random state isn't touched
+    for i in range(0, len(items), batch_size):
+        yield items[i:i + batch_size]           # the last slice holds whatever is left over
+
