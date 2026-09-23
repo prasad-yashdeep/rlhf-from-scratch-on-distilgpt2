@@ -38,6 +38,7 @@ python scaffold.py
 - [x] **26.** sft_train_step
 - [x] **27.** evaluate_loss
 - [x] **28.** lora_delta
+- [x] **29.** lora_linear_forward
 
 ---
 

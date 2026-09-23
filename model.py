@@ -283,3 +283,13 @@ def lora_delta(A, B, alpha, r):
     # TODO: build the scaled low-rank weight update from factors A and B.
     return (alpha / r) * (B @ A)
 
+# Step 29 - lora_linear_forward
+def lora_linear_forward(x, base_weight, A, B, alpha, r, bias=None):
+    # TODO: return x @ (base_weight + lora_delta).T (+ bias) using lora_delta(A, B, alpha, r)
+    
+
+    if bias!= None:
+        return x @ (base_weight + lora_delta(A,B, alpha, r)).T + bias
+
+    return x @ (base_weight + lora_delta(A,B, alpha, r)).T
+
