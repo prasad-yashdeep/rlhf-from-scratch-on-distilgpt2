@@ -318,9 +318,9 @@ def count_trainable_params(model):
     # TODO: sum p.numel() over parameters with requires_grad=True
 
     total_params = 0 
-    for name, param in model.parameters():
+    for param in model.parameters():
         if param.requires_grad == True:
-            total_params+= param.nummel()
+            total_params+= param.numel()
     
     return total_params
 
