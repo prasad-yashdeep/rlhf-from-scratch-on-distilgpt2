@@ -29,6 +29,7 @@ python scaffold.py
 - [x] **17.** collate_lm_batch
 - [x] **18.** iterate_minibatches
 - [x] **19.** train_val_split
+- [x] **20.** shift_logits_and_labels
 
 ---
 

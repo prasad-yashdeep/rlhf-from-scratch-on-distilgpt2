@@ -184,3 +184,9 @@ def train_val_split(examples, val_ratio=0.2, seed=0):
     train_split = examples[split:]
     return train_split, val_spit
 
+# Step 20 - shift_logits_and_labels
+def shift_logits_and_labels(logits, labels):
+    shift_logits = logits[:, :-1, :].contiguous()   # predictions at positions 0..T-2
+    shift_labels = labels[:, 1:].contiguous()       # the tokens they should predict: 1..T-1
+    return shift_logits, shift_labels
+
