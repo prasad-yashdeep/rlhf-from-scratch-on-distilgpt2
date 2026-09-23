@@ -238,3 +238,12 @@ def clip_grad_norm(grads, max_norm):
             g.mul_(scale)
     return total
 
+# Step 25 - accumulate_gradients
+import torch
+
+def accumulate_gradients(grad_list):
+    """Average a list of equally-shaped gradient tensors across micro-batches."""
+    # TODO: average a list of equally-shaped gradient tensors and return the mean tensor
+
+    return torch.stack(grad_list).mean(dim=0)
+
