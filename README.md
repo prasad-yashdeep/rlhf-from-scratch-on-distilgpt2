@@ -25,6 +25,7 @@ python scaffold.py
 - [x] **13.** build_labels
 - [x] **14.** mask_prompt_labels
 - [x] **15.** pad_batch
+- [x] **16.** make_attention_mask
 
 ---
 
