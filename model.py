@@ -260,3 +260,21 @@ def sft_train_step(model, batch, optimizer):
     optimizer.step()
     return loss.item()
 
+# Step 27 - evaluate_loss
+import torch
+
+def evaluate_loss(model, batches):
+    """Mean LM loss over validation batches, no grad."""
+    # TODO: iterate batches under no_grad, shift logits/labels, average cross-entropy.
+    model.eval()
+    losses = []
+
+    with torch.no_grad():
+        for batch in batches:
+            logits = model(input_ids=batch["input_ids"],
+                           attention_mask=batch["attention_mask"]).logits
+            loss = cross_entropy_loss(*shift_logits_and_labels(logits, batch["labels"]))
+            losses.append(loss.item())
+        
+    return sum(losses) / len(losses) if losses else float("nan")
+

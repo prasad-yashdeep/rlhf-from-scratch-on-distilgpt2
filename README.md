@@ -36,6 +36,7 @@ python scaffold.py
 - [x] **24.** clip_grad_norm
 - [x] **25.** accumulate_gradients
 - [x] **26.** sft_train_step
+- [x] **27.** evaluate_loss
 
 ---
 
