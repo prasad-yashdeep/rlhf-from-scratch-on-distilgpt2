@@ -227,3 +227,14 @@ def linear_warmup_schedule(step, warmup_steps):
         return 1.0
     return max(0.0, step / warmup_steps)
 
+# Step 24 - clip_grad_norm
+import torch
+
+def clip_grad_norm(grads, max_norm):
+    total = torch.sqrt(sum((g.detach().float() ** 2).sum() for g in grads)).item()
+    if total > max_norm:
+        scale = max_norm / (total + 1e-6)
+        for g in grads:
+            g.mul_(scale)
+    return total
+

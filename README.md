@@ -33,6 +33,7 @@ python scaffold.py
 - [x] **21.** cross_entropy_loss
 - [x] **22.** adamw_update
 - [x] **23.** linear_warmup_schedule
+- [x] **24.** clip_grad_norm
 
 ---
 
