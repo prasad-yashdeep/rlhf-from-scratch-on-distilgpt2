@@ -45,6 +45,7 @@ python scaffold.py
 - [x] **33.** merge_lora
 - [x] **34.** build_synthetic_preference_dataset
 - [x] **35.** format_preference
+- [x] **36.** reward_head_forward
 
 ---
 

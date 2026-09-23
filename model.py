@@ -348,3 +348,11 @@ def format_preference(example):
     return {"chosen_text": f"{p} {example['chosen']}",
             "rejected_text": f"{p} {example['rejected']}"}
 
+# Step 36 - reward_head_forward
+import torch
+
+def reward_head_forward(hidden_state, weight, bias):
+    """Map a final hidden state to a scalar reward via a linear projection."""
+    # TODO: project hidden_state (B, D) through weight (D,) plus scalar bias to get (B,) rewards
+    return (hidden_state@weight.T+bias).flatten()
+
