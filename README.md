@@ -35,6 +35,7 @@ python scaffold.py
 - [x] **23.** linear_warmup_schedule
 - [x] **24.** clip_grad_norm
 - [x] **25.** accumulate_gradients
+- [x] **26.** sft_train_step
 
 ---
 
