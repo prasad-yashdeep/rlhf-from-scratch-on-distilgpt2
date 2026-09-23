@@ -330,3 +330,15 @@ def merge_lora(base_weight, lora_a, lora_b, scaling):
 
     return base_weight + scaling* (lora_b@lora_a)
 
+# Step 34 - build_synthetic_preference_dataset
+_PAIRS = [
+    ("What is the capital of France?", "The capital of France is Paris.", "I do not know."),
+    ("What is 2 + 2?", "2 + 2 equals 4.", "2 + 2 equals 5."),
+]
+
+def build_synthetic_preference_dataset(num_examples=8, seed=0):
+    return [
+        {"prompt": p, "chosen": c, "rejected": r}
+        for p, c, r in (_PAIRS[(seed + i) % len(_PAIRS)] for i in range(num_examples))
+    ]
+

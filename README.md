@@ -43,6 +43,7 @@ python scaffold.py
 - [x] **31.** freeze_base_params
 - [x] **32.** count_trainable_params
 - [x] **33.** merge_lora
+- [x] **34.** build_synthetic_preference_dataset
 
 ---
 
