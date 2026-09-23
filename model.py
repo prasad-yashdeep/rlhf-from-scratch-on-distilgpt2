@@ -293,3 +293,20 @@ def lora_linear_forward(x, base_weight, A, B, alpha, r, bias=None):
 
     return x @ (base_weight + lora_delta(A,B, alpha, r)).T
 
+# Step 30 - init_lora_weights
+import torch
+
+def init_lora_weights(in_features, out_features, r, seed=0):
+    """Return (A, B) LoRA factors with random A and zero B so the initial delta is zero."""
+    # TODO: seed torch, build A of shape (r, in_features) and B of shape (out_features, r)
+    
+    g = torch.Generator().manual_seed(seed)
+    B = torch.zeros(size = (out_features, r), dtype=torch.float32 )
+    A = torch.randn(r, in_features, generator=g,dtype=torch.float32  )* 0.01
+    return A,B
+
+# Step 31 - freeze_base_params
+def freeze_base_params(model):
+    # TODO: set requires_grad=False on every base parameter, leaving LoRA adapters trainable.
+    print(list(model.named_parameters() ))
+
