@@ -41,6 +41,7 @@ python scaffold.py
 - [x] **29.** lora_linear_forward
 - [x] **30.** init_lora_weights
 - [x] **31.** freeze_base_params
+- [x] **32.** count_trainable_params
 
 ---
 

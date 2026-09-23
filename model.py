@@ -307,6 +307,20 @@ def init_lora_weights(in_features, out_features, r, seed=0):
 
 # Step 31 - freeze_base_params
 def freeze_base_params(model):
-    # TODO: set requires_grad=False on every base parameter, leaving LoRA adapters trainable.
-    print(list(model.named_parameters() ))
+    for name, param in model.named_parameters():
+        leaf = name.split(".")[-1]
+        is_lora = "lora" in name.lower() or leaf in ("A", "B")
+        param.requires_grad = is_lora
+    return model
+
+# Step 32 - count_trainable_params
+def count_trainable_params(model):
+    # TODO: sum p.numel() over parameters with requires_grad=True
+
+    total_params = 0 
+    for name, param in model.parameters():
+        if param.requires_grad == True:
+            total_params+= param.nummel()
+    
+    return total_params
 
