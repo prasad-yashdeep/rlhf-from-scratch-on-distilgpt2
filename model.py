@@ -342,3 +342,9 @@ def build_synthetic_preference_dataset(num_examples=8, seed=0):
         for p, c, r in (_PAIRS[(seed + i) % len(_PAIRS)] for i in range(num_examples))
     ]
 
+# Step 35 - format_preference
+def format_preference(example):
+    p = example["prompt"]
+    return {"chosen_text": f"{p} {example['chosen']}",
+            "rejected_text": f"{p} {example['rejected']}"}
+
