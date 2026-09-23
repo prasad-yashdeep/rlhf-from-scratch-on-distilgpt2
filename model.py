@@ -173,3 +173,14 @@ def iterate_minibatches(examples, batch_size, seed=0):
     for i in range(0, len(items), batch_size):
         yield items[i:i + batch_size]           # the last slice holds whatever is left over
 
+# Step 19 - train_val_split
+import math
+def train_val_split(examples, val_ratio=0.2, seed=0):
+    # TODO: deterministically split examples into (train, val) using seed and val_ratio
+
+    random.Random(seed).shuffle(examples)
+    split = math.floor(len(examples) * val_ratio)
+    val_spit = examples[:split]
+    train_split = examples[split:]
+    return train_split, val_spit
+

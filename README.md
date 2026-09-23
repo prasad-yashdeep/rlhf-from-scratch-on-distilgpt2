@@ -28,6 +28,7 @@ python scaffold.py
 - [x] **16.** make_attention_mask
 - [x] **17.** collate_lm_batch
 - [x] **18.** iterate_minibatches
+- [x] **19.** train_val_split
 
 ---
 
