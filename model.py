@@ -190,3 +190,13 @@ def shift_logits_and_labels(logits, labels):
     shift_labels = labels[:, 1:].contiguous()       # the tokens they should predict: 1..T-1
     return shift_logits, shift_labels
 
+# Step 21 - cross_entropy_loss
+import torch
+import torch.nn.functional as F
+
+def cross_entropy_loss(shift_logits, shift_labels):
+    v = shift_logits.shape[-1]
+    return F.cross_entropy(shift_logits.reshape(-1, v),   # (B*(T-1), V)
+                           shift_labels.reshape(-1),      # (B*(T-1),)
+                           ignore_index=-100)
+

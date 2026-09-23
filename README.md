@@ -30,6 +30,7 @@ python scaffold.py
 - [x] **18.** iterate_minibatches
 - [x] **19.** train_val_split
 - [x] **20.** shift_logits_and_labels
+- [x] **21.** cross_entropy_loss
 
 ---
 
