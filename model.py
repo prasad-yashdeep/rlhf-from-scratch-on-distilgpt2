@@ -384,3 +384,23 @@ def pairwise_accuracy(chosen_reward, rejected_reward):
     # TODO: return the fraction of pairs where chosen strictly beats rejected
     return (chosen_reward > rejected_reward).float().mean().item()
 
+# Step 40 - reward_train_step
+import torch
+
+def reward_train_step(model, reward_head, batch, optimizer):
+    # TODO: forward chosen+rejected, score last token, compute loss/acc, step optimizer
+
+    def score(ids, mask):
+        h = model(ids, attention_mask=mask)                               # (B, T, D)
+        last = (mask.sum(dim=1) - 1).clamp(min=0).long()                         # last real token per row
+        pooled = h.gather(1, last.view(-1, 1, 1).expand(-1, 1, h.size(-1))).squeeze(1)   # (B, D)
+        return reward_head_forward(pooled, reward_head.weight, reward_head.bias)          # (B,)
+
+    optimizer.zero_grad()
+    r_c = score(batch["chosen_input_ids"], batch["chosen_attention_mask"])
+    r_r = score(batch["rejected_input_ids"], batch["rejected_attention_mask"])
+    loss = pairwise_reward_loss(r_c, r_r)
+    loss.backward()
+    optimizer.step()
+    return {"loss": loss.item(), "accuracy": pairwise_accuracy(r_c.detach(), r_r.detach())}
+
