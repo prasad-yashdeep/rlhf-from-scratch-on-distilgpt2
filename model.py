@@ -354,7 +354,7 @@ import torch
 def reward_head_forward(hidden_state, weight, bias):
     """Map a final hidden state to a scalar reward via a linear projection."""
     # TODO: project hidden_state (B, D) through weight (D,) plus scalar bias to get (B,) rewards
-    return (hidden_state@weight.T+bias).flatten()
+    return (hidden_state @ weight.reshape(-1)) + bias.reshape(-1)
 
 # Step 37 - pairwise_reward_loss
 import torch
