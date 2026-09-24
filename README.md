@@ -48,6 +48,7 @@ python scaffold.py
 - [x] **36.** reward_head_forward
 - [x] **37.** pairwise_reward_loss
 - [x] **38.** reward_bce_loss
+- [x] **39.** pairwise_accuracy
 
 ---
 
