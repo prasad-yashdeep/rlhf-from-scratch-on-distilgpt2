@@ -367,3 +367,12 @@ def pairwise_reward_loss(chosen_reward, rejected_reward):
 
     return torch.mean(-F.logsigmoid(chosen_reward- rejected_reward))
 
+# Step 38 - reward_bce_loss
+import torch
+import torch.nn.functional as F
+
+def reward_bce_loss(chosen_reward, rejected_reward):
+    rc = torch.as_tensor(chosen_reward, dtype=torch.float32)
+    rr = torch.as_tensor(rejected_reward, dtype=torch.float32)
+    return torch.cat([F.softplus(-rc).reshape(-1), F.softplus(rr).reshape(-1)]).mean()
+
